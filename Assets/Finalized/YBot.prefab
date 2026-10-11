@@ -44,13 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79e653c206d4e45a1ba7926aaf2f47e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AvatarProceduralController
-  tempo: 1
-  jerk: 0
+  armHeight: 0
+  tempo: 0.55
+  jerk: 0.5
   verticalAmplitude: 0
   horizontalAmplitude: 0
   forwardAmplitude: 0
-  armHeight: 0
-  armExtension: 1
   verticalDirection: -1
   floorHeight: 0.1
   hipTarget: {fileID: 1075581426589550193}

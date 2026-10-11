@@ -11,7 +11,6 @@ public class ControlPanel : MonoBehaviour
 
     [Header("Sliders")]
     public Slider armHeightSlider;
-    public Slider armExtensionSlider;
     public Slider tempoSlider;
     public Slider jerkSlider;
     public Slider verticalSlider;
@@ -74,12 +73,6 @@ public class ControlPanel : MonoBehaviour
             armHeightSlider.value = bodyMovement.armHeight;
             armHeightSlider.onValueChanged.AddListener(OnArmHeightChanged);
         }
-
-        if (armExtensionSlider != null)
-        {
-            armExtensionSlider.value = bodyMovement.armExtension;
-            armExtensionSlider.onValueChanged.AddListener(OnArmExtensionChanged);
-        }
     }
 
     void OnTempoChanged(float value)
@@ -124,10 +117,5 @@ public class ControlPanel : MonoBehaviour
     {
         if (bodyMovement != null)
             bodyMovement.armHeight = value;
-    }
-    void OnArmExtensionChanged(float value)
-    {
-        if (bodyMovement != null)
-            bodyMovement.armExtension = value;
     }
 }

@@ -7,9 +7,9 @@ public class AvatarProceduralController : MonoBehaviour
 
     [Header("Slider Inputs")]
     [Range(0f,180f)] public float armHeight = 0.0f;
-    [Range(0f,1f)] public float armExtension = 1.0f;
-    [Range(0f,1f)] public float tempo = 0.1f;
-    [Range(0f,1f)] public float jerk = 0.0f;
+    float armExtension = 0.5f;
+    [Range(0.1f,1f)] public float tempo = 0.55f;
+    [Range(0f,1f)] public float jerk = 0.5f;
     [Range(0f,1f)] public float verticalAmplitude = 0.0f; 
     [Range(0f,1f)] public float horizontalAmplitude = 0.0f;
     [Range(0f,1f)] public float forwardAmplitude = 0.0f;
@@ -65,7 +65,7 @@ public class AvatarProceduralController : MonoBehaviour
     }
 
 
-    void Update()
+    void FixedUpdate()
     {
         // Keep time
         phase += Time.deltaTime * tempo * 8;
@@ -225,7 +225,7 @@ public class AvatarProceduralController : MonoBehaviour
     {
         // When jerk = 0: power = 1, so we get a regular smooth sine wave
         // When jerk = 1: power = 0.15, so we get a highly accelerated square wave
-        float power = Mathf.Lerp(1f, 0.25f, jerk);
+        float power = Mathf.Lerp(1f, 0.25f, 1 - jerk);
 
         // Mathf.Sign used to preserve directionality after losing it in Mathf.Abs
         // Applying fractional powers makes the wave explode towards 1/-1 faster

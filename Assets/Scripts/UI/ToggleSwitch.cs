@@ -16,10 +16,10 @@ public class ToggleSwitch : MonoBehaviour, IPointerClickHandler
     public TextMeshProUGUI directionText;
 
     [Header("Positions")]
-    public float downPosition = 65f; // left position handle should move to
-    public float upPosition = 115f; // right position
-    public float downTextPosition = -27f;
-    public float upTextPosition = -60f;
+    public float downPosition = 75f; // left position handle should move to
+    public float upPosition = 95f; // right position
+    //public float downTextPosition = -27f;
+    //public float upTextPosition = -60f;
 
     [Header("Animation")]
     public float animationSpeed = 40f;
@@ -47,10 +47,10 @@ public class ToggleSwitch : MonoBehaviour, IPointerClickHandler
         handlePos.x = targetX;
         handle.anchoredPosition = handlePos;
         
-        directionText.SetText("Down");
-        Vector2 textPos = directionText.rectTransform.anchoredPosition;
-        textPos.x = downTextPosition;
-        directionText.rectTransform.anchoredPosition = textPos;
+        // directionText.SetText("Down");
+        //Vector2 textPos = directionText.rectTransform.anchoredPosition;
+        //textPos.x = downTextPosition;
+        //directionText.rectTransform.anchoredPosition = textPos;
     }
 
     void Update()
@@ -85,11 +85,11 @@ public class ToggleSwitch : MonoBehaviour, IPointerClickHandler
         isOn = !isOn;
         targetX = isOn ? upPosition : downPosition;
 
-        string direction = isOn ? "Up" : "Down";
-        directionText.SetText(direction);
-        Vector2 textPos = directionText.rectTransform.anchoredPosition;
-        textPos.x = isOn ? upTextPosition : downTextPosition;
-        directionText.rectTransform.anchoredPosition = textPos;
+        //string direction = isOn ? "Up" : "Down";
+        //directionText.SetText(direction);
+        //Vector2 textPos = directionText.rectTransform.anchoredPosition;
+        //textPos.x = isOn ? upTextPosition : downTextPosition;
+        //directionText.rectTransform.anchoredPosition = textPos;
 
         onValueChanged.Invoke(isOn);
     }
@@ -99,13 +99,14 @@ public class ToggleSwitch : MonoBehaviour, IPointerClickHandler
         if (value == AvatarProceduralController.VerticalDirection.Up) {
             isOn = true;
             targetX = upPosition;
-            directionText.SetText("Up");
+            //directionText.SetText("Up");
         }
         else if (value == AvatarProceduralController.VerticalDirection.Down)
         {
             isOn = false;
             targetX = downPosition;
-            directionText.SetText("Down");
+            //directionText.SetText("Down");
         }
+        onValueChanged.Invoke(isOn);
     }
 }

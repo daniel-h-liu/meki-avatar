@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,10 +10,10 @@ public class CameraOrbit : MonoBehaviour
     public float scrollSpeed = 0.01f;
     public float distance = -2f;
     public float heightOffset = 0.95f;
-    public float leftOffset = 0.6f;
+    public float leftOffset = 0f;
     
-    private float currentRotationY = 0f;
-    private bool isRotating = false;
+    private float currentRotationY = 180f;
+    public bool isRotating = false;
     private Vector2 lastMousePosition;
 
     void Start()
@@ -22,11 +23,15 @@ public class CameraOrbit : MonoBehaviour
 
     void Update()
     {
-        if (target == null) return;
-        
-        HandleRotation();
-        HandleScroll();
-        UpdateCameraPosition();
+        if (target == null) {
+            return;
+        }
+        // Commented out to disable orbiting for now
+        // if (isRotating) {
+        //     HandleRotation();
+        //     HandleScroll();
+        //     UpdateCameraPosition();
+        // }
     }
 
     void HandleRotation()
@@ -86,6 +91,11 @@ public class CameraOrbit : MonoBehaviour
     void OnDisable()
     {
         isRotating = false;
+    }
+
+    public void ToggleCamera(bool state)
+    {
+        isRotating = state;
     }
 
     // Called from SessionManager
